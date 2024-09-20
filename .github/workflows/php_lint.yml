@@ -1,26 +1,20 @@
-name: PHP Code Linting
+name: CI
 
-on:
-  push:
-    branches: [main]
+on: [push]
 
 jobs:
-  lint:
+  build-and-test:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v3
 
-      - name: Install PHP and PHP Code Sniffer
-        run: |
-          sudo apt-get update -y
-          sudo apt-get install php php-curl php-xml php-mbstring php-bcmath -y
-          sudo apt-get install php-pear -y
-          pear install PHP_CodeSniffer
+      - name: Composer install
+        uses: php-actions/composer@v6
 
-      - name: Create temporary directory
-        run: mkdir -p .tmp
-
-      - name: Run PHP Code Sniffer
-        run: |
-          phpcs --temp-dir=.tmp --standard=PSR12 .
+      - name: PHP Code Sniffer
+        uses: php-actions/phpcs@v1
+        with:
+          php_version: 8.1
+          path: src/
+          standard: phpcs.xml
