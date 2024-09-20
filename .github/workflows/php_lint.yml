@@ -1,0 +1,23 @@
+name: PHP Code Linting
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install PHP and PHP Code Sniffer
+        run: |
+          sudo apt-get update -y
+          sudo apt-get install php php-curl php-xml php-mbstring php-bcmath -y
+          sudo apt-get install php-pear -y
+          pear install PHP_CodeSniffer
+
+      - name: Run PHP Code Sniffer
+        run: |
+          phpcs --standard=PSR12 .
