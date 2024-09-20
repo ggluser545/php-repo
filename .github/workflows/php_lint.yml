@@ -1,4 +1,4 @@
-name: CI
+name: PHP Code Sniff
 
 on: [push]
 
