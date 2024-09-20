@@ -16,5 +16,5 @@ jobs:
         with:
           php_version: 8.1          # Specify the PHP version
           path: src/index.php        # Path to the file to be checked
-          standard: PSR12            # You can specify any standard, e.g., PSR12, or use phpcs.xml if you have custom rules
-          report: full               # Prints a full report with any detected issues
+          standard: PSR12            # Coding standard, e.g., PSR12 or use phpcs.xml for custom rules
+          report: full               # Prints a full report with detected issues
