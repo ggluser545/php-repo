@@ -7,11 +7,18 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # Step to check out the code
       - uses: actions/checkout@v3
 
+      # Step to install PHP dependencies using Composer
+      - name: Composer install
+        uses: php-actions/composer@v6
+
+      # Step to run PHP CodeSniffer
       - name: PHP Code Sniffer
         uses: php-actions/phpcs@v1
         with:
-          php_version: 8.1
-          path: src/
-          standard: phpcs.xml
+          php_version: 8.1          # Specify the PHP version
+          path: src/index.php        # Path to the file to be checked
+          standard: PSR12            # You can specify any standard, e.g., PSR12, or use phpcs.xml if you have custom rules
+          report: full               # Prints a full report with any detected issues
