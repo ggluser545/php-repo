@@ -18,6 +18,9 @@ jobs:
           sudo apt-get install php-pear -y
           pear install PHP_CodeSniffer
 
+      - name: Create temporary directory
+        run: mkdir -p .tmp
+
       - name: Run PHP Code Sniffer
         run: |
-          phpcs --standard=PSR12 .
+          phpcs --temp-dir=.tmp --standard=PSR12 .
