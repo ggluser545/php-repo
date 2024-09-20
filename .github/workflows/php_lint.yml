@@ -10,10 +10,6 @@ jobs:
       # Step to check out the code
       - uses: actions/checkout@v3
 
-      # Step to install PHP dependencies using Composer
-      - name: Composer install
-        uses: php-actions/composer@v6
-
       # Step to run PHP CodeSniffer
       - name: PHP Code Sniffer
         uses: php-actions/phpcs@v1
