@@ -9,6 +9,11 @@ jobs:
     steps:
       # Step to check out the code
       - uses: actions/checkout@v3
+      
+      # Step to run PHP linting to check for syntax errors
+      - name: PHP Syntax Check (Lint)
+        run: |
+          find src/ -name "*.php" -print0 | xargs -0 -n1 php -l
 
       # Step to run PHP CodeSniffer
       - name: PHP Code Sniffer
