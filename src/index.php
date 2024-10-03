@@ -2,5 +2,5 @@
 
 echo "hello world";
 echo "hi";
-echo "ok, new line";
-echo "no";
+echo "ok, new line"
+echo "no"
